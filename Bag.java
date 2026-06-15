@@ -36,7 +36,23 @@ public class Bag<T> {
         items.remove(item);
     }
 
+    /**
+     * Removes all items from the bag, leaving it empty.
+     */
+    public void clear() {
+        items.clear();
+    }
+
     // Non-mutating query operations (bag contents not changed)
+    /**
+     * Checks whether the bag currently holds no items.
+     * 
+     * @return true if the bag is empty; false otherwise
+     */
+    public boolean isEmpty() {
+        return items.isEmpty();
+    }
+
     /**
      * Checks if bag contains at least one occurrence of specified item.
      * 
@@ -83,6 +99,9 @@ public class Bag<T> {
         System.out.println("1. Creating a new Bag<String> (Gunpla Collection)");
         Bag<String> gunplaBag = new Bag<>();
 
+        // After creating the empty bag (step 1)
+        System.out.println("Is the bag empty? " + gunplaBag.isEmpty()); // true
+
         // Add several elements to the bag, including duplicates.
         System.out.println("\n2. Adding kits to collection");
         gunplaBag.add("HG RX-78-2 Gundam");
@@ -124,5 +143,12 @@ public class Bag<T> {
         // Test count() for the removed element
         System.out.println("\n-Testing count() after removal-");
         System.out.println("Count of 'HG RX-78-2 Gundam': " + gunplaBag.count("HG RX-78-2 Gundam")); // 2
+
+        // New final step, after the removal tests
+        System.out.println("\n4. Clearing the collection");
+        gunplaBag.clear();
+        System.out.println("-Bag contents after clear-");
+        System.out.println(gunplaBag);
+        System.out.println("Is the bag empty? " + gunplaBag.isEmpty()); // true
     }
 }
